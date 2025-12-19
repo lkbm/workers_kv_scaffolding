@@ -7,7 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 This is a math puzzle application built with:
 - **Frontend**: Preact (React alternative) with TypeScript and Vite
 - **Backend**: Hono framework running on Cloudflare Workers
-- **Storage**: Cloudflare KV for persistent data storage (not used)
+- **Storage**: Cloudflare KV for persistent data storage (possibly not used)
 - **Deployment**: Cloudflare Workers via Wrangler
 
 ## Architecture
@@ -17,10 +17,10 @@ This is a math puzzle application built with:
 
 ### Backend (src/main.tsx)
 - Hono server with simple REST API:
-  - `GET /api/state/:key` - retrieve list data
-  - `PUT /api/state/:key` - save list data
+  - `GET /api/state/:key` - retrieve data
+  - `PUT /api/state/:key` - save data
 - Serves static assets from /dist
-- Uses Cloudflare KV namespace "GROCERYLIST" for persistence
+- Uses Cloudflare KV namespace "PLACEHOLDER_KV_NAMESPACE" for persistence
 
 ### Build Configuration
 - Vite with Preact preset
