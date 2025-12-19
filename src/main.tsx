@@ -2,7 +2,7 @@ import { Hono } from "hono";
 import { serveStatic } from "hono/cloudflare-workers";
 
 export interface Env {
-	GROCERYLIST: KVNamespace;
+	PLACEHOLDER_KV_NAMESPACE: KVNamespace;
 }
 
 const app = new Hono<{ Bindings: Env }>();
@@ -10,14 +10,14 @@ const app = new Hono<{ Bindings: Env }>();
 // API routes
 app.get("/api/state/:key", async (c) => {
 	const key = c.req.param("key");
-	const value = await c.env.GROCERYLIST.get(key);
+	const value = await c.env.PLACEHOLDER_KV_NAMESPACE.get(key);
 	return c.json({ value });
 });
 
 app.put("/api/state/:key", async (c) => {
 	const key = c.req.param("key");
 	const { value } = await c.req.json();
-	await c.env.GROCERYLIST.put(key, value);
+	await c.env.PLACEHOLDER_KV_NAMESPACE.put(key, value);
 	return c.json({ success: true });
 });
 
