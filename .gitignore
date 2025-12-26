@@ -24,6 +24,5 @@ dist-ssr
 *.sw?
 
 .wrangler
-wrangler.toml
 
 bundle-visualization.html

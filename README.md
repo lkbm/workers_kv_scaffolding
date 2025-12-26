@@ -6,7 +6,7 @@ You can view a deployed version at https://PLACEHOLDER_KV_NAMESPACE.your_workers
 
 Your workers subdomain is set in the Cloudflare dashboard under Workers & Pages -> Account Details. You can also add a Workers Route to give it a custom domain.
 
-Before deploying, you'll need to create a Cloudflare Workers project and set up a KV namespace. Copy `wrangler.toml.example` to `wrangler.toml` and update the KV namespace/id. Then just search the repo for "placeholder" to find everywhere needing configuring. Then write an app in `src/App.tsx`!
+Before deploying, you'll need to create a Cloudflare Workers project and set up a KV namespace. Update the namespace and id in `wrangler.toml`. Also search the repo for "placeholder" to find everywhere needing configuring. Then write an app in `src/App.tsx`!
 ## Project Structure
 
 ```
