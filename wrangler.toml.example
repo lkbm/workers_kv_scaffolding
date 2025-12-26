@@ -1,0 +1,14 @@
+name = "PLACEHOLDER_APP_NAME"
+main = "src/main.tsx"
+compatibility_date = "2024-01-01"
+
+
+[[kv_namespaces]]
+binding = "PLACEHOLDER_KV_NAMESPACE"
+id = "PLACEHOLDER_KV_NAMESPACE_ID"
+
+[assets]
+directory = "./dist"
+
+[build]
+command = "npm run build"
