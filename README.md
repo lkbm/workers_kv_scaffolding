@@ -2,17 +2,20 @@
 
 A simple application built with Preact, TypeScript, Vite, and Cloudflare Workers.
 
-You can view a deployed version at https://PLACEHOLDER_KV_NAMESPACE.your_workers_subdomain.workers.dev/
+You can view a deployed version at https://placeholder-app-name.lkbm.workers.dev/
 
 Your workers subdomain is set in the Cloudflare dashboard under Workers & Pages -> Account Details. You can also add a Workers Route to give it a custom domain.
 
-Before deploying, you'll need to create a Cloudflare Workers project and set up a KV namespace. Update the namespace and id in `wrangler.toml`. Also search the repo for "placeholder" to find everywhere needing configuring. Then write an app in `src/App.tsx`!
+Before deploying, you'll need to create a Cloudflare Workers project and set up a KV namespace. Update the namespace and id in `wrangler.toml`. Also search the repo for "placeholder" (case-insensitive) to find everywhere needing configuring. Then write an app in `src/App.tsx`!
+
 ## Project Structure
 
 ```
 ├── src/                    # Application source code
-│   ├── App.tsx            # Preact frontend component
-│   └── main.tsx           # Hono backend (Cloudflare Worker)
+│   ├── App.tsx             # Preact frontend component
+│   └── main.tsx            # Hono backend (Cloudflare Worker)
+├── public/                 # Static assets (will be copied into dist/ on build)
+│   └── 404.html            # Served on routes that don't match anything
 ├── dist/                   # Built frontend assets (generated)
 ├── index.html              # Entry HTML for Vite
 └── [config files]          # See below
@@ -29,6 +32,7 @@ This project has several config files because it runs code in **two different en
 | `tsconfig.node.json` | **Build tooling** - for `vite.config.ts` (Node.js environment) |
 | `vite.config.ts` | **Vite bundler config** - builds the frontend, handles Preact |
 | `worker-configuration.d.ts` | **Cloudflare types** - auto-generated types for KV bindings |
+| `wrangler.toml` | **Cloudflare Workers config** - deployment settings |
 
 ### Why Three TypeScript Configs?
 
@@ -68,7 +72,8 @@ npm run dev          # Start development server
 
 # Build and Deploy
 npm run build        # TypeScript compile + Vite build
-npm run deploy       # Deploy to Cloudflare Workers
+npm run deploy       # Deploy to Cloudflare Workers (will build first)
+
 
 # Code Quality
 npm run lint         # ESLint checking
@@ -80,7 +85,8 @@ npm run preview      # Preview production build
 ```bash
 nvm use              # Switch to correct Node version
 nvm install          # Install Node version if needed
-npm run dev          # Start dev server
+npm run dev          # Start dev server using Vite (no backend; fine if not KV requests)
+npx wrangler dev     # Start dev server using wrangler (Includes a local backend)
 ```
 
 ## Deploy

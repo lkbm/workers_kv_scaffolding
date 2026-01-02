@@ -1,8 +1,8 @@
 import { Hono } from "hono";
-import { serveStatic } from "hono/cloudflare-workers";
 
 export interface Env {
 	PLACEHOLDER_KV_NAMESPACE: KVNamespace;
+	ASSETS: Fetcher; // provided by Workers Static Assets binding
 }
 
 const app = new Hono<{ Bindings: Env }>();
@@ -16,19 +16,9 @@ app.get("/api/state/:key", async (c) => {
 
 app.put("/api/state/:key", async (c) => {
 	const key = c.req.param("key");
-	const { value } = await c.req.json();
+	const { value } = await c.req.json<{ value: string }>();
 	await c.env.PLACEHOLDER_KV_NAMESPACE.put(key, value);
 	return c.json({ success: true });
 });
-
-// Serve static assets
-app.get("*", serveStatic({
-	root: "./dist",
-	rewriteRequestPath: (path) => {
-		if (path === "/") return "/index.html";
-		return path;
-	},
-	manifest: {} // Added required manifest property
-}));
 
 export default app;
