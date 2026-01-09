@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a math puzzle application built with:
+This is a simple React app built with:
 - **Frontend**: Preact (React alternative) with TypeScript and Vite
 - **Backend**: Hono framework running on Cloudflare Workers
 - **Storage**: Cloudflare KV for persistent data storage (possibly not used)
@@ -46,4 +46,4 @@ npm run preview      # Preview production build
 ## Development Notes
 
 ## TODOs
-* Nothing is yet implemented other than the basic Workers + Preact scaffolding.
+* Durable Objects support
