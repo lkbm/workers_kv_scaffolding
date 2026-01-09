@@ -5,7 +5,7 @@ compatibility_date = "2024-01-01"
 
 [[kv_namespaces]]
 binding = "PLACEHOLDER_KV_NAMESPACE"
-id = "PLACEHOLDER_KV_NAMESPACE_ID"
+id = "4b6f90b7b1b54b12bc7dcbdf4dd41d42"
 
 [assets]
 directory = "./dist"

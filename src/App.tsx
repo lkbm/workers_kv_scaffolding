@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'preact/hooks';
 
 export default function App() {
-	const currentHash = window.location.hash.slice(1) || "default";
+	const currentHash = window.location.hash.slice(1) || 'default';
 	const [isLoading, setIsLoading] = useState(true);
 	const [isSaving, setIsSaving] = useState(false);
 	const [currentData, setCurrentData] = useState('');
@@ -35,7 +35,7 @@ export default function App() {
 				console.error(`Error: ${response.status}`);
 			}
 		} catch (err) {
-			console.error("Save error", err);
+			console.error('Save error', err);
 		} finally {
 			setIsSaving(false);
 		}
